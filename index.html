@@ -4,315 +4,262 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HVACFLOW AI</title>
-  <meta name="description" content="Serving HVAC contractors, real estate investors, brokers, and agents. We GUARANTEE $50,000+ in added revenue within 90 days — or you don't pay." />
+  <meta name="description" content="Serving HVAC contractors and business owners. We GUARANTEE $50,000+ in added revenue within 90 days — or you don't pay." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <style>
     :root{
-      --bg:#ffffff; --ink:#0b0b0f; --muted:#6b7280; --line:#e5e7eb;
-      --blue:#17B6FF; --cyan:#18E0FF; --red:#FF4A3D; --orange:#FF6A00;
-      --btn:#111827; --btnText:#ffffff; --container:1180px;
-      --radius:14px; --shadow:0 8px 22px rgba(2,6,23,.06);
+      --bg:#ffffff; --ink:#0b0b0f; --muted:#5b616b; --line:#e5e7eb;
+      --red:#d71920; --orange:#ff6a00; --accent:#111827; --container:1100px;
+      --radius:16px; --shadow:0 8px 20px rgba(2,6,23,.06);
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
+    html,body{background:#fff;color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
     a{color:inherit;text-decoration:none}
-    img,video{max-width:100%;display:block}
+    img{max-width:100%;display:block}
     .container{max-width:var(--container);margin:0 auto;padding:0 20px}
-    .section{padding:84px 0}
-    h1{font-size:clamp(30px,4.4vw,54px);line-height:1.04;letter-spacing:-.01em;margin:0 0 10px}
-    h2{font-size:clamp(22px,3vw,36px);letter-spacing:-.01em;margin:0 0 12px}
-    p{font-size:clamp(15px,1.1vw,18px);line-height:1.65;margin:10px 0}
+    .section{padding:68px 0}
+    h1{font-size:clamp(28px,5vw,44px);line-height:1.06;letter-spacing:-.01em;margin:8px 0}
+    h2{font-size:clamp(24px,4.2vw,40px);letter-spacing:-.01em;margin-bottom:12px}
+    p{font-size:clamp(15px,1.15vw,18px);line-height:1.65}
+
+    /* top logo header */
+    .top{padding:44px 0 16px;text-align:center}
+    .top .logo{height:84px;width:84px;margin:0 auto 12px;border-radius:50%}
+    .title{font-weight:800;text-align:center;margin-bottom:10px;letter-spacing:.02em}
+    .sub-line{color:var(--muted);text-align:center;margin-top:8px}
+    .guarantee{color:var(--red);font-weight:800;text-align:center;margin:14px 0}
     .muted{color:var(--muted)}
 
-    /* NAV */
-    .nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50}
-    .nav-inner{min-height:68px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
-    .brand img{height:32px;width:32px;border-radius:50%}
-    .links{display:flex;gap:20px;align-items:center}
-    .burger{display:none;background:none;border:0;font-size:26px;color:#111827}
-    .mobile-menu{display:none;flex-direction:column;gap:12px;padding:16px;border-top:1px solid var(--line);background:#fff}
+    /* media frames + YT cover */
+    .frame{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 #f4f4f5}
+    .ratio{position:relative;width:100%;padding-top:56.25%}
+    .ratio iframe{position:absolute;inset:0;width:100%;height:100%}
+    .yt-cover{position:relative;cursor:pointer}
+    .yt-cover .thumb{width:100%;aspect-ratio:16/9;object-fit:cover}
+    .yt-cover .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.35))}
+    .yt-cover .play{height:68px;width:68px;border-radius:50%;display:grid;place-items:center;background:#ff0000;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+    .yt-cover .play:before{content:"";border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
 
-    /* Buttons */
-    .btn{display:inline-block;padding:14px 20px;border-radius:10px;background:var(--btn);color:var(--btnText);font-weight:600;border:1px solid #111827;transition:transform .15s ease, box-shadow .15s ease, background .2s ease}
-    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
-    .btn.ghost{background:transparent;color:#111827;border:1px solid #111827}
-    .btn.gradient{background:linear-gradient(90deg,var(--blue),var(--cyan),var(--red),var(--orange));border:none;color:#111827}
-    .btn.gradient:hover{filter:saturate(1.08) brightness(1.02)}
-
-    /* HERO */
-    .hero{padding:92px 0 36px;text-align:center;position:relative}
-    .hero .aura{position:absolute;inset:-120px 0 auto 0;height:240px;z-index:-1;
-      background:
-        radial-gradient(28% 60% at 35% 40%, rgba(23,182,255,.18), transparent 60%),
-        radial-gradient(28% 60% at 65% 40%, rgba(255,74,61,.18), transparent 60%);
-      filter:blur(44px)
-    }
-    .media-frame{margin-top:16px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;position:relative}
+    /* CTA buttons */
     .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+    .btn{display:inline-flex;gap:10px;align-items:center;padding:14px 20px;border-radius:999px;background:#d51b1b;color:#fff;font-weight:700;border:1px solid #b90d0d;box-shadow:inset 0 -2px 0 rgba(0,0,0,.1)}
+    .btn:hover{filter:brightness(1.02)}
+    .btn.ghost{background:#fff;color:#000;border:3px solid #000;border-radius:22px;box-shadow:8px 8px 0 #000}
 
-    /* Lite YouTube cover (click-to-play) */
-    .yt-cover{position:relative;cursor:pointer;background:#000;color:#fff}
-    .yt-cover .thumb{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
-    .yt-cover .overlay{
-      position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.35));
-    }
-    .yt-cover .play{
-      height:68px;width:68px;border-radius:50%;
-      background:linear-gradient(90deg,var(--blue),var(--red));
-      display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.2)
-    }
-    .yt-cover .play:before{
-      content:"";border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px
-    }
+    /* booking section (immediately after hero) */
+    .book .frame{border-radius:16px}
+    .book .ratio{padding-top:1100px}
 
-    /* Trust strip */
-    .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
-    .trust .row{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;padding:14px 0;color:#374151;font-size:14px}
+    /* black band section */
+    .band{background:#0b0b0f;color:#fff;padding:60px 0;text-align:center}
+    .band h2{color:#fff;font-size:clamp(28px,5vw,44px)}
+    .band p{color:#d1d5db}
 
-    /* Proof / cards */
-    .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
-    .proof{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;transition:transform .15s ease, box-shadow .15s ease}
-    .proof:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-    .proof img{aspect-ratio:16/9;object-fit:cover}
-    .proof figcaption{padding:12px 14px;font-size:14px;color:#374151;max-width:60ch}
+    /* proof cards */
+    .proof-grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:900px){.proof-grid{grid-template-columns:repeat(3,1fr)}}
+    .proof{border:1px dashed #f08c8c;border-radius:24px;padding:18px}
+    .proof img{border-radius:12px;margin-top:12px}
 
-    .thumb-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
-    .thumb-row img{border-radius:12px;border:1px solid var(--line);background:#fff;aspect-ratio:16/9;object-fit:cover}
+    /* heavy-outline button block */
+    .big-cta{padding:28px 0}
+    .big-cta .btn.ghost{font-size:18px;padding:18px 22px}
 
     /* FAQ */
-    .faq details{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;background:#fff;transition:border-color .15s ease}
-    .faq summary{cursor:pointer;font-weight:600;list-style:none}
-    .faq details[open]{border-color:#d1d5db}
+    .faq h2{margin-bottom:6px}
+    .faq .qa{border-top:1px solid var(--line);padding:18px 0}
+    .q{display:flex;justify-content:space-between;align-items:center;font-weight:600}
+    .plus{color:#ff6a00;font-size:28px;line-height:1}
+    .a{color:#444;margin-top:8px}
 
-    /* Booking two-column (right after hero) */
-    .book{display:grid;grid-template-columns:1.1fr 1.4fr;gap:24px;align-items:start}
-    .book .panel{border:1px solid var(--line);border-radius:14px;background:#fff;padding:18px}
-    .check{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
-    .dot{height:8px;width:8px;border-radius:50%;margin-top:8px;background:linear-gradient(90deg,var(--blue),var(--red))}
+    /* footer */
+    .footer{background:#0b0b0f;color:#ddd;padding:36px 0}
+    .footer a{color:#9bb0ff;text-decoration:underline}
 
-    /* Footer */
-    .footer{border-top:1px solid var(--line);padding:28px 0;color:#374151;background:#fff}
-    .footer .container{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between}
-    .contact{display:flex;gap:10px;align-items:center}
-
-    /* Mobile */
-    @media(max-width:990px){ .book{grid-template-columns:1fr} }
-    @media(max-width:900px){
-      .links{display:none}.burger{display:block}
-      .proof-grid,.thumb-row{grid-template-columns:1fr}
-    }
+    /* utility */
+    .center{text-align:center}
   </style>
 </head>
 <body>
-  <!-- NAV -->
-  <header class="nav">
-    <div class="nav-inner container">
-      <a href="#top" class="brand">
-        <img src="assets/logo.PNG" alt="HVACFLOW AI logo" />
-        <span>HVACFLOW <strong>AI</strong></span>
-      </a>
-      <nav class="links">
-        <a href="#results">Results</a>
-        <a href="#faq">FAQ</a>
-        <a class="btn" href="#book">Schedule a demo</a>
-      </nav>
-      <button class="burger" id="burger">☰</button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#results">Results</a>
-      <a href="#faq">FAQ</a>
-      <a class="btn" href="#book">Schedule a demo</a>
-    </div>
+  <!-- TOP / LOGO + TITLES -->
+  <header class="top container">
+    <img class="logo" src="assets/logo.PNG" alt="HVACFLOW AI logo" />
+    <h1 class="title">HVACFLOW AI</h1>
+
+    <!-- Realtor line REMOVED per your request -->
+
+    <p class="guarantee">We GUARANTEE $50,000+ in added revenue within 90 days…<br><span style="display:inline-block;margin-top:4px">OR YOU DON'T PAY</span></p>
+    <p class="sub-line">Click Below to Watch Video Below to See How it Works (Sound On 🐚)</p>
   </header>
 
-  <!-- HERO -->
-  <main id="top">
-    <section class="hero container">
-      <div class="aura"></div>
-      <h1>Serving HVAC Contractors and Business Owners</h1>
-      <h1>Serving Real Estate Investors, Brokers, &amp; Agents</h1>
-      <p><b>We GUARANTEE $50,000+</b> in added revenue within 90 days — <b>OR YOU DON'T PAY</b></p>
-      <p class="muted">Click below to watch the video (Sound On)</p>
-
-      <!-- HERO video with cover -->
-      <div class="media-frame">
-        <div class="yt-cover" data-ytid="JDq-C7CQbSI" aria-label="Play video: How it Works - Hero">
-          <img class="thumb" src="https://img.youtube.com/vi/JDq-C7CQbSI/hqdefault.jpg" alt="How it Works - Hero cover"/>
-          <div class="overlay"><div class="play"></div></div>
-        </div>
+  <!-- HERO VIDEO (cover, click-to-play) -->
+  <section class="container">
+    <div class="frame">
+      <div class="yt-cover" data-ytid="JDq-C7CQbSI" aria-label="Play video: Hero">
+        <img class="thumb" src="https://img.youtube.com/vi/JDq-C7CQbSI/hqdefault.jpg" alt="Hero video cover" />
+        <div class="overlay"><div class="play"></div></div>
       </div>
+    </div>
+  </section>
 
-      <div class="cta-row">
-        <a class="btn gradient" href="#book">Schedule a demo</a>
-        <a class="btn ghost" href="#book">Click Here If You Want More Deals</a>
+  <!-- BOOKING: directly after hero -->
+  <section id="book" class="section container book">
+    <div class="frame">
+      <div class="ratio" style="position:relative">
+        <iframe src="https://api.leadconnectorhq.com/widget/booking/RxAdTAWXAByLNQE0CMV0" title="Strategy Call | HVAC Flow AI" frameborder="0" style="position:absolute;inset:0;width:100%;height:100%;" allowtransparency="true"></iframe>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- BOOKING RIGHT AFTER HERO -->
-    <section id="book" class="section container">
-      <h2>Book Your Demo</h2>
-      <div class="book">
-        <!-- Left reassurance -->
-        <div class="panel">
-          <div class="check"><span class="dot"></span><p>Live in days — no heavy lift</p></div>
-          <div class="check"><span class="dot"></span><p>Exclusive, qualified leads only</p></div>
-          <div class="check"><span class="dot"></span><p>Automation + human QA for quality</p></div>
-          <div class="check"><span class="dot"></span><p>You own your pipeline &amp; data</p></div>
-          <div class="check"><span class="dot"></span><p>Transparent tracking &amp; reporting</p></div>
-          <div class="cta-row" style="margin-top:10px">
-            <a class="btn gradient" href="mailto:hvacflowai@gmail.com">hvacflowai@gmail.com</a>
-            <a class="btn ghost" href="tel:+12093280536">(209) 328-0536</a>
-          </div>
-        </div>
-
-        <!-- Right: scheduler (LeadConnector; send Calendly URL if you prefer) -->
-        <div class="panel">
-          <div class="media-frame" style="border-radius:12px;overflow:hidden;">
-            <div style="position:relative;padding-top:1100px;max-width:100%">
-              <iframe
-                src="https://api.leadconnectorhq.com/widget/booking/RxAdTAWXAByLNQE0CMV0"
-                title="Schedule a demo"
-                frameborder="0"
-                style="position:absolute;inset:0;width:100%;height:100%;"
-                allowtransparency="true">
-              </iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- TRUST STRIP -->
-    <section class="trust">
-      <div class="container">
-        <div class="row">
-          <span>Fast setup</span> • <span>Exclusive leads</span> • <span>Booked jobs, not just names</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPLAINER VIDEOS with covers -->
-    <section class="section container">
-      <h2>How It Works (Explainer Videos)</h2>
-      <p class="muted">Two quick breakdowns of the system in action.</p>
-
-      <div class="media-frame" style="margin-top:14px">
-        <div class="yt-cover" data-ytid="D4AppVEXyFw" aria-label="Play video: Explainer 1">
-          <img class="thumb" src="https://img.youtube.com/vi/D4AppVEXyFw/hqdefault.jpg" alt="Explainer 1 cover"/>
-          <div class="overlay"><div class="play"></div></div>
-        </div>
-      </div>
-
-      <div class="media-frame" style="margin-top:14px">
-        <div class="yt-cover" data-ytid="uVH9ABjZeAk" aria-label="Play video: Explainer 2">
-          <img class="thumb" src="https://img.youtube.com/vi/uVH9ABjZeAk/hqdefault.jpg" alt="Explainer 2 cover"/>
-          <div class="overlay"><div class="play"></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Positioning -->
-    <section class="section container">
+  <!-- BLACK BAND “Less Clients, Better Results” -->
+  <section class="band">
+    <div class="container">
       <h2>Less Clients, Better Results</h2>
       <p>We are strict on our client qualification process to ensure lead quality stays high and our team can over-deliver.</p>
-      <p class="muted">(See Client Testimonials Below)</p>
-    </section>
+      <p style="margin-top:8px">(See Client Testimonials Below)</p>
+    </div>
+  </section>
+  <!-- RESULTS HEADING -->
+  <section class="section container">
+    <h2 style="font-weight:800;letter-spacing:-.015em">Real Client Success Stories</h2>
 
-    <!-- RESULTS / PROOF -->
-    <section id="results" class="section container">
-      <h2>Real Client Success Stories</h2>
-      <div class="proof-grid">
-        <figure class="proof">
-          <img src="assets/proof1.PNG" alt="Client proof 1" />
-          <figcaption>Andrew closed over $7,000 in deals in less than 48 hours after implementing our system — proof of HVACFLOW AI’s power.</figcaption>
-        </figure>
-        <figure class="proof">
-          <img src="assets/proof2.PNG" alt="Client proof 2" />
-          <figcaption>$6.32 per qualified lead; massive ROI and a $3,000 closed deal from our precision campaigns.</figcaption>
-        </figure>
-        <figure class="proof">
-          <img src="assets/proof3.PNG" alt="Client proof 3" />
-          <figcaption>Real-time intake + nurturing turns inquiries into booked jobs without chasing.</figcaption>
-        </figure>
+    <!-- Proof cards with rounded dashed borders -->
+    <div class="proof-grid" style="margin-top:14px">
+      <article class="proof">
+        <p>Andrew closed over $7,000 in deals in less than 48 hours after implementing our system, showcasing the rapid results possible with HVACFLOW AI.</p>
+        <img src="assets/proof1.PNG" alt="Stripe proof 1" />
+      </article>
+
+      <article class="proof">
+        <p><strong>$6.32</strong> per qualified lead, demonstrating significant ROI through our targeted campaigns. Successfully securing a $3,000 closed deal.</p>
+        <img src="assets/proof2.PNG" alt="Lead cost proof" />
+      </article>
+
+      <article class="proof">
+        <p>Hear directly from owners — structured intake and nurturing delivers booked jobs without chasing leads.</p>
+        <img src="assets/proof3.PNG" alt="Chat proof" />
+      </article>
+    </div>
+  </section>
+
+  <!-- “Hear Directly from Our Clients” -->
+  <section class="section container">
+    <h2 class="center">Hear Directly from Our Clients</h2>
+    <p class="center muted" style="max-width:65ch;margin:6px auto 16px">
+      These real HVAC business owners share their experiences working with HVACFLOW AI and the tangible results they've achieved with our systems.
+    </p>
+
+    <!-- Explainer video 1 (cover) -->
+    <div class="frame" style="border-radius:22px;margin:0 0 18px">
+      <div class="yt-cover" data-ytid="D4AppVEXyFw" aria-label="Play video: Explainer 1">
+        <img class="thumb" src="https://img.youtube.com/vi/D4AppVEXyFw/hqdefault.jpg" alt="Explainer 1 cover" />
+        <div class="overlay"><div class="play"></div></div>
       </div>
-    </section>
+    </div>
 
-    <!-- FAQ -->
-    <section id="faq" class="section container faq">
-      <h2>Frequently Asked Questions</h2>
-      <details open>
-        <summary>Are the leads exclusive?</summary>
-        <p>Yes — each lead is delivered exclusively to you. We do not sell or recycle your leads.</p>
-      </details>
-      <details>
-        <summary>What sets you apart?</summary>
-        <p>We combine AI automation, human QA, and paid traffic to deliver booked jobs — not just names.</p>
-      </details>
-      <details>
-        <summary>How fresh are the leads?</summary>
-        <p>Every inquiry is followed up within minutes using our automated intake system.</p>
-      </details>
-      <details>
-        <summary>How do you qualify these leads?</summary>
-        <p>We pre-filter by budget, location, and readiness — you spend time only on high-probability opportunities.</p>
-      </details>
-      <details>
-        <summary>How is pricing structured?</summary>
-        <p>Simple monthly retainer with volume tiers. Ask during your demo.</p>
-      </details>
-      <details>
-        <summary>Do you guarantee valid leads?</summary>
-        <p>Invalid or spam submissions are replaced after QA.</p>
-      </details>
-       <details>
-        <summary>Are you compliant with privacy laws?</summary>
-        <p>Yes — we follow consent, opt-in, and secure data storage protocols.</p>
-      </details>
-      <details>
-        <summary>What are the next steps?</summary>
-        <p>Book a demo, connect your tools, and go live in days — not weeks.</p>
-      </details>
-    </section>
-  </main>
+    <!-- Explainer video 2 (cover) -->
+    <div class="frame" style="border-radius:22px">
+      <div class="yt-cover" data-ytid="uVH9ABjZeAk" aria-label="Play video: Explainer 2">
+        <img class="thumb" src="https://img.youtube.com/vi/uVH9ABjZeAk/hqdefault.jpg" alt="Explainer 2 cover" />
+        <div class="overlay"><div class="play"></div></div>
+      </div>
+    </div>
 
-  <!-- FOOTER -->
+    <!-- Red pill CTA -->
+    <div class="cta-row" style="margin-top:18px">
+      <a class="btn" href="#book">Schedule a demo <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <!-- Big outlined CTA -->
+  <section class="big-cta container">
+    <div class="center">
+      <a class="btn ghost" href="#book">Click Here If You Want More Deals</a>
+    </div>
+  </section>
+
+  <!-- FAQ heading -->
+  <section id="faq" class="section container faq">
+    <h2 style="font-weight:800;letter-spacing:-.015em">Frequently Asked Questions</h2>
+
+    <div class="qa">
+      <div class="q"><span>Are the leads exclusive?</span><span class="plus">+</span></div>
+      <div class="a">Yes — each lead is delivered exclusively to you. We do not sell or recycle your leads.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span>What sets you apart from other providers?</span><span class="plus">+</span></div>
+      <div class="a">We combine AI automation, human QA, and paid traffic to deliver booked jobs — not just names.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span>How fresh are the leads?</span><span class="plus">+</span></div>
+      <div class="a">Every inquiry is followed up within minutes using our automated intake system.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span>How do you qualify these leads?</span><span class="plus">+</span></div>
+      <div class="a">We pre-filter by budget, location, and readiness — you spend time only on high-probability opportunities.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span>How do you acquire the leads?</span><span class="plus">+</span></div>
+      <div class="a">Targeted ads + SEO + referral funnels tailored to your local market.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span>How is pricing structured?</span><span class="plus">+</span></div>
+      <div class="a">Simple monthly retainer with volume tiers. Ask on your demo.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span>Do you guarantee valid leads?</span><span class="plus">+</span></div>
+      <div class="a">Invalid or spam submissions are replaced after QA.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span>Are you compliant with data privacy regulations?</span><span class="plus">+</span></div>
+      <div class="a">Yes — opt-in, data retention, and consent are built into our flow.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span>What are the next steps to get started?</span><span class="plus">+</span></div>
+      <div class="a">Book a demo, connect your tools, and go live in days — not weeks.</div>
+    </div>
+  </section>
+  <!-- Footer (black like Framer example) -->
   <footer class="footer">
-    <div class="container">
-      <div class="legal">
-        <a href="#" class="muted">Terms &amp; Service</a>
-      </div>
-      <div class="contact">
-        <a href="mailto:hvacflowai@gmail.com">hvacflowai@gmail.com</a>
-        <span>•</span>
-        <a href="tel:+12093280536">(209) 328-0536</a>
-      </div>
-      <div class="disclaimer">
-        <p>Nothing on this page, any of our websites, or any of our content is a guarantee of results or earnings. Examples are illustrative only and not promises of future performance.</p>
-        <p>Use caution and always consult your advisor before acting on information related to your business or finances. You alone are responsible for your decisions and results.</p>
-      </div>
+    <div class="container center">
+      <p style="margin-bottom:10px;"><a href="mailto:hvacflowai@gmail.com">hvacflowai@gmail.com</a> • <a href="tel:+12093280536">(209) 328-0536</a></p>
+
+      <p>Nothing on this page, any of our websites, or any of our content or curriculum is a promise or guarantee of results or future earnings, and we do not offer any legal, business, tax or other professional advice. Any financial numbers referenced here, or on any of our sites, are illustrative of concepts only and should not be considered average earnings, exact earnings, or promises for actual or future performance.</p>
+      <p style="margin-top:12px">Use caution and always consult your accountant, lawyer or professional advisor before acting on this or any information related to a lifestyle change or your business or finances. You alone are responsible and accountable for your decisions, actions and results in life.</p>
+
+      <p style="margin-top:18px">This site is not a part of the Meta website or Meta Inc. Additionally, This site is NOT endorsed by Meta in any way. Meta is a trademark of Meta, Inc.</p>
+      <p style="margin-top:18px"><a href="#" style="color:#9bb0ff">Terms &amp; Service</a></p>
     </div>
   </footer>
 
   <script>
-    // Mobile menu toggle
+    // Mobile menu toggle guard (if you later add a top nav)
     const burger = document.getElementById('burger');
     const menu = document.getElementById('mobileMenu');
-    burger?.addEventListener('click', ()=> {
-      menu.style.display = (menu.style.display==='flex') ? 'none' : 'flex';
-    });
+    if(burger && menu){
+      burger.addEventListener('click', ()=> {
+        menu.style.display = (menu.style.display==='flex') ? 'none' : 'flex';
+      });
+    }
 
-    // Lite YouTube loader: replaces cover with actual iframe on click
-    function loadYT(el){
+    // YouTube "cover -> autoplay embed" loader
+    function mountYouTube(el){
       const id = el.getAttribute('data-ytid');
       if(!id) return;
       const iframe = document.createElement('iframe');
       iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
       iframe.title = 'YouTube video player';
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
       iframe.allowFullscreen = true;
       iframe.frameBorder = '0';
       iframe.style.position = 'absolute';
@@ -320,19 +267,19 @@
       iframe.style.width = '100%';
       iframe.style.height = '100%';
 
-      // Wrap in a ratio container to preserve layout
       const ratio = document.createElement('div');
       ratio.className = 'ratio';
       ratio.appendChild(iframe);
 
-      const frame = el.closest('.media-frame');
+      const frame = el.closest('.frame');
       frame.innerHTML = '';
       frame.appendChild(ratio);
     }
 
-    document.querySelectorAll('.yt-cover').forEach(c=>{
-      c.addEventListener('click', ()=> loadYT(c));
-      c.addEventListener('keypress', (e)=> { if(e.key==='Enter'){ loadYT(c); }});
+    document.querySelectorAll('.yt-cover').forEach(el=>{
+      el.addEventListener('click', ()=> mountYouTube(el));
+      el.tabIndex = 0;
+      el.addEventListener('keypress', (e)=>{ if(e.key==='Enter'){ mountYouTube(el); }});
     });
   </script>
 </body>
