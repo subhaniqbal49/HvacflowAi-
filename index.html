@@ -4,131 +4,127 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HVACFLOW AI</title>
-  <meta name="description" content="Serving HVAC contractors and business owners. We GUARANTEE $50,000+ in added revenue within 90 days — or you don't pay." />
+  <meta name="description" content="We GUARANTEE $50,000+ in added revenue within 90 days — or you don't pay." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#ffffff; --ink:#0b0b0f; --muted:#5b616b; --line:#e5e7eb;
-      --red:#d71920; --orange:#ff6a00; --container:1100px;
-      --radius:16px; --shadow:0 8px 20px rgba(2,6,23,.06);
+      --ink:#0b0b0f; --muted:#5b616b; --line:#e5e7eb;
+      --red:#d71920; --orange:#ff6a00;
+      --container:1120px; --r:22px;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{background:#fff;color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     .container{max-width:var(--container);margin:0 auto;padding:0 20px}
-    .section{padding:68px 0}
-    h1{font-size:clamp(28px,5vw,44px);line-height:1.06;letter-spacing:-.01em;margin:8px 0}
-    h2{font-size:clamp(24px,4.2vw,40px);letter-spacing:-.01em;margin-bottom:12px}
-    p{font-size:clamp(15px,1.15vw,18px);line-height:1.65}
-    .center{text-align:center}
-    .muted{color:var(--muted)}
+    .section{padding:72px 0}
 
-    /* header */
-    .top{padding:44px 0 16px;text-align:center}
-    .top .logo{height:84px;width:84px;margin:0 auto 12px;border-radius:50%}
-    .title{font-weight:800;text-align:center;margin-bottom:10px;letter-spacing:.02em}
-    .guarantee{color:var(--red);font-weight:800;text-align:center;margin:14px 0}
-    .sub-line{color:var(--muted);text-align:center;margin-top:8px}
+    /* Top */
+    header{padding:52px 0 18px;text-align:center}
+    .logo{height:92px;width:92px;border-radius:50%;margin:0 auto 16px}
+    h1.title{font-weight:900;letter-spacing:-.02em;font-size:clamp(30px,5.2vw,44px);margin-bottom:8px}
+    .guarantee{color:var(--red);font-weight:900;font-size:clamp(18px,2.2vw,22px);line-height:1.45;margin:14px 0;text-align:center}
+    .sub{color:#3a3a3a;text-align:center;margin-top:10px;font-size:clamp(15px,1.7vw,18px)}
 
-    /* media frames */
-    .frame{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 #f4f4f5}
+    /* Media frame + YT cover */
+    .frame{border:1px solid var(--line);border-radius:28px;overflow:hidden;background:#fff}
     .ratio{position:relative;width:100%;padding-top:56.25%}
-    .ratio iframe{position:absolute;inset:0;width:100%;height:100%}
-    .round{border-radius:26px;overflow:hidden}
+    .ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .cover{position:relative;cursor:pointer;background:#000}
+    .cover img.thumb{width:100%;aspect-ratio:16/9;object-fit:cover}
+    .cover .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.35))}
+    .cover .play{height:74px;width:74px;border-radius:50%;display:grid;place-items:center;background:#ff0000;box-shadow:0 8px 24px rgba(0,0,0,.28)}
+    .cover .play::before{content:"";border-left:18px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:4px}
 
-    /* CTA buttons */
-    .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
-    .btn-outline-red{
-      display:inline-flex;gap:10px;align-items:center;
-      padding:14px 22px;border-radius:999px;font-weight:800;
-      background:transparent;color:#d71920;border:2.5px solid #d71920;
-      transition:all .18s ease; box-shadow:none;
+    /* Transparent red outline CTA */
+    .cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn-outline{
+      display:inline-flex;align-items:center;gap:10px;padding:16px 24px;
+      border-radius:999px;border:2.5px solid var(--red);color:var(--red);
+      font-weight:900;letter-spacing:.02em;background:transparent;transition:.2s ease
     }
-    .btn-outline-red:hover{background:#d71920; color:#fff}
-    .btn-ghost-heavy{
-      display:inline-flex;gap:10px;align-items:center;
-      padding:18px 22px;border-radius:22px;background:#fff;color:#000;
-      border:3px solid #000;box-shadow:8px 8px 0 #000;font-weight:800
-    }
+    .btn-outline:hover{background:var(--red);color:#fff}
 
-    /* booking */
+    /* Booking below hero */
     .book .ratio{padding-top:1100px}
 
-    /* black band */
-    .band{background:#0b0b0f;color:#fff;padding:60px 0;text-align:center}
-    .band h2{color:#fff;font-size:clamp(28px,5vw,44px)}
-    .band p{color:#d1d5db}
+    /* Black band */
+    .band{background:#0b0b0f;color:#fff;text-align:center;padding:62px 0}
+    .band h2{font-weight:900;letter-spacing:-.02em;font-size:clamp(28px,5vw,44px)}
+    .band p{color:#cbd5e1;margin-top:8px}
 
-    /* proofs */
-    .proof-grid{display:grid;grid-template-columns:1fr;gap:18px}
-    @media(min-width:900px){.proof-grid{grid-template-columns:repeat(3,1fr)}}
-    .proof{border:1px dashed #f08c8c;border-radius:24px;padding:18px}
-    .proof img{border-radius:12px;margin-top:12px}
+    /* Results / dashed cards */
+    .proof-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:14px}
+    @media(min-width:960px){.proof-grid{grid-template-columns:repeat(3,1fr)}}
+    .proof{border:1.5px dashed #f08c8c;border-radius:26px;padding:18px}
+    .proof img{border-radius:14px;margin-top:12px}
+    .results-title{font-weight:900;letter-spacing:-.015em;font-size:clamp(24px,4vw,40px)}
 
-    /* FAQ – luxurious accordion */
-    .faq{max-width:var(--container);margin:0 auto}
+    /* Testimonials stacked */
+    .stack{display:flex;flex-direction:column;gap:16px}
+
+    /* Big outlined CTA */
+    .big-cta{padding:28px 0;text-align:center}
+    .btn-ghost{
+      display:inline-flex;align-items:center;gap:12px;padding:20px 26px;
+      background:#fff;color:#000;border:3px solid #000;border-radius:24px;
+      box-shadow:8px 8px 0 #000;font-weight:900
+    }
+
+    /* FAQ accordion */
+    .faq-wrap{max-width:980px;margin:0 auto}
+    .faq-title{font-weight:900;letter-spacing:-.015em;font-size:clamp(24px,4vw,40px);margin-bottom:10px}
     .acc{border-top:1px solid var(--line)}
     .acc-item{border-bottom:1px solid var(--line)}
     .acc-btn{
-      width:100%;text-align:left;background:#fff;border:0;cursor:pointer;
-      padding:22px 4px;font-size:18px;display:flex;justify-content:space-between;align-items:center;
-      font-weight:600
+      width:100%;background:#fff;border:0;cursor:pointer;
+      padding:22px 6px;display:flex;justify-content:space-between;align-items:center;
+      font-weight:700;font-size:18px;text-align:left
     }
     .acc-icon{
       display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;
-      color:#fff;background:var(--orange);font-size:20px;line-height:1
+      color:#fff;background:var(--orange);font-size:20px;transition:.2s
     }
-    .acc-body{
-      overflow:hidden;max-height:0;transition:max-height .25s ease,padding .25s ease;
-      padding:0 4px;color:#444
-    }
-    .acc-item.open .acc-body{padding:0 4px 16px}
-    .acc-item.open .acc-icon{background:#ff8a33}
-    .acc-item.open .acc-icon span{transform:rotate(45deg)} /* plus -> x */
+    .acc-body{max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s ease;color:#434343;padding:0 6px}
+    .acc-item.open .acc-body{max-height:220px;padding-bottom:16px}
+    .acc-item.open .acc-icon{background:#ff8a33;transform:rotate(45deg)}
 
-    /* footer */
-    .footer{background:#0b0b0f;color:#ddd;padding:36px 0}
+    /* Footer */
+    .footer{background:#0b0b0f;color:#ddd;padding:40px 0;text-align:center}
     .footer a{color:#9bb0ff;text-decoration:underline}
   </style>
 </head>
 <body>
 
-  <!-- TOP / LOGO + TITLES -->
-  <header class="top container">
-    <img class="logo" src="assets/logo.PNG" alt="HVACFLOW AI logo" />
+  <!-- TOP -->
+  <header class="container">
+    <img src="assets/logo.PNG" alt="HVACFLOW AI logo" class="logo" />
     <h1 class="title">HVACFLOW AI</h1>
-
     <!-- Realtor line intentionally removed -->
-
-    <p class="guarantee">We GUARANTEE $50,000+ in added revenue within 90 days…<br><span style="display:inline-block;margin-top:4px">OR YOU DON'T PAY</span></p>
-    <p class="sub-line">Click Below to Watch Video Below to See How it Works (Sound On 🐚)</p>
+    <p class="guarantee">We GUARANTEE $50,000+ in added revenue within 90 days…<br>OR YOU DON'T PAY</p>
+    <p class="sub">Click Below to Watch Video Below to See How it Works (Sound On 🔉)</p>
   </header>
 
-  <!-- HERO VIDEO -->
+  <!-- HERO VIDEO (cover) -->
   <section class="container">
-    <div class="frame round">
-      <div class="ratio">
-        <iframe src="https://www.youtube.com/embed/JDq-C7CQbSI"
-                title="Hero: How it Works"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
+    <div class="frame">
+      <div class="cover" data-ytid="JDq-C7CQbSI" aria-label="Play video: Hero">
+        <img class="thumb" src="https://img.youtube.com/vi/JDq-C7CQbSI/hqdefault.jpg" alt="Hero video cover">
+        <div class="overlay"><div class="play"></div></div>
       </div>
     </div>
   </section>
 
-  <!-- BOOKING: directly after hero -->
+  <!-- BOOKING right after hero -->
   <section id="book" class="section container book">
-    <div class="frame round">
+    <div class="frame">
       <div class="ratio" style="position:relative">
         <iframe
           src="https://api.leadconnectorhq.com/widget/booking/RxAdTAWXAByLNQE0CMV0"
           title="Strategy Call | HVAC Flow AI"
-          frameborder="0"
           style="position:absolute;inset:0;width:100%;height:100%;"
           allowtransparency="true"></iframe>
       </div>
@@ -140,164 +136,112 @@
     <div class="container">
       <h2>Less Clients, Better Results</h2>
       <p>We are strict on our client qualification process to ensure lead quality stays high and our team can over-deliver.</p>
-      <p style="margin-top:8px">(See Client Testimonials Below)</p>
+      <p>(See Client Testimonials Below)</p>
     </div>
   </section>
 
-  <!-- PROOFS -->
+  <!-- RESULTS -->
   <section class="section container">
-    <h2 style="font-weight:800;letter-spacing:-.015em">Real Client Success Stories</h2>
-    <div class="proof-grid" style="margin-top:14px">
+    <h2 class="results-title">Real Client Success Stories</h2>
+    <div class="proof-grid">
       <article class="proof">
         <p>Andrew closed over $7,000 in deals in less than 48 hours after implementing our system, showcasing the rapid results possible with HVACFLOW AI.</p>
-        <img src="assets/proof1.PNG" alt="Stripe proof 1" />
+        <img src="assets/proof1.PNG" alt="Stripe proof 1">
       </article>
       <article class="proof">
         <p><strong>$6.32</strong> per qualified lead, demonstrating significant ROI through our targeted campaigns. Successfully securing a $3,000 closed deal.</p>
-        <img src="assets/proof2.PNG" alt="Lead cost proof" />
+        <img src="assets/proof2.PNG" alt="Lead cost proof">
       </article>
       <article class="proof">
         <p>Real-time intake + nurturing turns inquiries into booked jobs without chasing.</p>
-        <img src="assets/proof3.PNG" alt="Chat proof" />
+        <img src="assets/proof3.PNG" alt="Chat proof">
       </article>
     </div>
   </section>
 
-  <!-- TESTIMONIAL VIDEOS (STACKED, CLEAR) -->
+  <!-- TESTIMONIALS (stacked videos with covers) -->
   <section class="section container">
-    <h2 class="center">Hear Directly from Our Clients</h2>
-    <p class="center muted" style="max-width:65ch;margin:6px auto 18px">
+    <h2 style="font-weight:900;letter-spacing:-.015em;text-align:center;margin-bottom:6px">Hear Directly from Our Clients</h2>
+    <p style="text-align:center;color:#5b616b;max-width:65ch;margin:0 auto 16px">
       These real HVAC business owners share their experiences working with HVACFLOW AI and the tangible results they've achieved with our systems.
     </p>
 
-    <!-- Video 1 -->
-    <div class="frame round" style="margin-bottom:16px">
-      <div class="ratio">
-        <iframe src="https://www.youtube.com/embed/D4AppVEXyFw"
-                title="Explainer 1"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
+    <div class="stack">
+      <div class="frame">
+        <div class="cover" data-ytid="D4AppVEXyFw" aria-label="Play video: Explainer 1">
+          <img class="thumb" src="https://img.youtube.com/vi/D4AppVEXyFw/hqdefault.jpg" alt="Explainer 1 cover">
+          <div class="overlay"><div class="play"></div></div>
+        </div>
+      </div>
+
+      <div class="frame">
+        <div class="cover" data-ytid="uVH9ABjZeAk" aria-label="Play video: Explainer 2">
+          <img class="thumb" src="https://img.youtube.com/vi/uVH9ABjZeAk/hqdefault.jpg" alt="Explainer 2 cover">
+          <div class="overlay"><div class="play"></div></div>
+        </div>
       </div>
     </div>
 
-    <!-- Video 2 -->
-    <div class="frame round">
-      <div class="ratio">
-        <iframe src="https://www.youtube.com/embed/uVH9ABjZeAk"
-                title="Explainer 2"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-      </div>
-    </div>
-
-    <!-- Transparent CTA -->
-    <div class="cta-row" style="margin-top:18px">
-      <a class="btn-outline-red" href="#book">Schedule a demo →</a>
+    <div class="cta">
+      <a class="btn-outline" href="#book">Schedule a demo →</a>
     </div>
   </section>
 
   <!-- BIG OUTLINED CTA -->
   <section class="container" style="padding:28px 0">
-    <div class="center">
-      <a class="btn-ghost-heavy" href="#book">Click Here If You Want More Deals</a>
+    <div style="text-align:center">
+      <a class="btn-ghost" href="#book">Click Here If You Want More Deals</a>
     </div>
   </section>
 
-  <!-- FAQ (CLICKABLE, LUXE) -->
-  <section id="faq" class="section faq container">
-    <h2 style="font-weight:800;letter-spacing:-.015em;margin-bottom:6px">Frequently Asked Questions</h2>
+  <!-- FAQ -->
+  <section class="section container faq-wrap" id="faq">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
     <div class="acc">
 
       <div class="acc-item">
-        <button class="acc-btn">
-          <span>Are the leads exclusive?</span>
-          <span class="acc-icon"><span>+</span></span>
-        </button>
-        <div class="acc-body">
-          <p>Yes — each lead is delivered exclusively to you. We do not sell or recycle your leads.</p>
-        </div>
+        <button class="acc-btn">Are the leads exclusive?<span class="acc-icon">+</span></button>
+        <div class="acc-body"><p>Yes — each lead is delivered exclusively to you. We do not sell or recycle your leads.</p></div>
       </div>
 
       <div class="acc-item">
-        <button class="acc-btn">
-          <span>What sets you apart from other providers?</span>
-          <span class="acc-icon"><span>+</span></span>
-        </button>
-        <div class="acc-body">
-          <p>We combine AI automation, human QA, and paid traffic to deliver booked jobs — not just names.</p>
-        </div>
+        <button class="acc-btn">What sets you apart from other providers?<span class="acc-icon">+</span></button>
+        <div class="acc-body"><p>We combine AI automation, human QA, and paid traffic to deliver booked jobs — not just names.</p></div>
       </div>
 
       <div class="acc-item">
-        <button class="acc-btn">
-          <span>How fresh are the leads?</span>
-          <span class="acc-icon"><span>+</span></span>
-        </button>
-        <div class="acc-body">
-          <p>Every inquiry is followed up within minutes using our automated intake system.</p>
-        </div>
+        <button class="acc-btn">How fresh are the leads?<span class="acc-icon">+</span></button>
+        <div class="acc-body"><p>Every inquiry is followed up within minutes using our automated intake system.</p></div>
       </div>
 
       <div class="acc-item">
-        <button class="acc-btn">
-          <span>How do you qualify these leads?</span>
-          <span class="acc-icon"><span>+</span></span>
-        </button>
-        <div class="acc-body">
-          <p>We pre-filter by budget, location, and readiness — you spend time only on high-probability opportunities.</p>
-        </div>
+        <button class="acc-btn">How do you qualify these leads?<span class="acc-icon">+</span></button>
+        <div class="acc-body"><p>We pre-filter by budget, location, and readiness — you spend time only on high-probability opportunities.</p></div>
       </div>
 
       <div class="acc-item">
-        <button class="acc-btn">
-          <span>How do you acquire the leads?</span>
-          <span class="acc-icon"><span>+</span></span>
-        </button>
-        <div class="acc-body">
-          <p>Leads are acquired from proven and high converting Google, Facebook, and Instagram ads.</p>
-        </div>
+        <button class="acc-btn">How do you acquire the leads?<span class="acc-icon">+</span></button>
+        <div class="acc-body"><p>Leads are acquired from proven and high converting Google, Facebook, and Instagram ads.</p></div>
       </div>
 
       <div class="acc-item">
-        <button class="acc-btn">
-          <span>How is pricing structured?</span>
-          <span class="acc-icon"><span>+</span></span>
-        </button>
-        <div class="acc-body">
-          <p>Simple monthly retainer with volume tiers. Ask during your demo.</p>
-        </div>
+        <button class="acc-btn">How is pricing structured?<span class="acc-icon">+</span></button>
+        <div class="acc-body"><p>Simple monthly retainer with volume tiers. Ask during your demo.</p></div>
       </div>
 
       <div class="acc-item">
-        <button class="acc-btn">
-          <span>Do you guarantee valid leads?</span>
-          <span class="acc-icon"><span>+</span></span>
-        </button>
-        <div class="acc-body">
-          <p>Invalid or spam submissions are replaced after QA.</p>
-        </div>
+        <button class="acc-btn">Do you guarantee valid leads?<span class="acc-icon">+</span></button>
+        <div class="acc-body"><p>Invalid or spam submissions are replaced after QA.</p></div>
       </div>
 
       <div class="acc-item">
-        <button class="acc-btn">
-          <span>Are you compliant with data privacy regulations?</span>
-          <span class="acc-icon"><span>+</span></span>
-        </button>
-        <div class="acc-body">
-          <p>Yes — opt-in, consent, and secure data retention are built-in.</p>
-        </div>
+        <button class="acc-btn">Are you compliant with data privacy regulations?<span class="acc-icon">+</span></button>
+        <div class="acc-body"><p>Yes — opt-in, consent, and secure data retention are built into our flow.</p></div>
       </div>
 
       <div class="acc-item">
-        <button class="acc-btn">
-          <span>What are the next steps to get started?</span>
-          <span class="acc-icon"><span>+</span></span>
-        </button>
-        <div class="acc-body">
-          <p>Book a demo, connect your tools, and go live in days — not weeks.</p>
-        </div>
+        <button class="acc-btn">What are the next steps to get started?<span class="acc-icon">+</span></button>
+        <div class="acc-body"><p>Book a demo, connect your tools, and go live in days — not weeks.</p></div>
       </div>
 
     </div>
@@ -305,7 +249,7 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="container center">
+    <div class="container">
       <p style="margin-bottom:10px;">
         <a href="mailto:hvacflowai@gmail.com">hvacflowai@gmail.com</a> •
         <a href="tel:+12093280536">(209) 328-0536</a>
@@ -320,44 +264,38 @@
   </footer>
 
   <script>
-    // Accordion (luxury, smooth)
-    document.querySelectorAll('.acc-item').forEach(item=>{
-      const btn = item.querySelector('.acc-btn');
-      const body = item.querySelector('.acc-body');
-      const icon = item.querySelector('.acc-icon span');
-
-      const closeAll = () => {
-        document.querySelectorAll('.acc-item.open').forEach(openItem=>{
-          if(openItem!==item){
-            const b = openItem.querySelector('.acc-body');
-            openItem.classList.remove('open');
-            b.style.maxHeight = 0;
-          }
-        });
-      };
-
-      btn.addEventListener('click', ()=>{
-        const isOpen = item.classList.contains('open');
-        closeAll();
-        if(!isOpen){
-          item.classList.add('open');
-          body.style.maxHeight = body.scrollHeight + 'px';
-        }else{
-          item.classList.remove('open');
-          body.style.maxHeight = 0;
-        }
-      });
-
-      // allow keyboard
-      btn.setAttribute('aria-expanded','false');
+    // Replace cover with autoplaying YouTube iframe on click
+    function mountYT(el){
+      const id = el.getAttribute('data-ytid'); if(!id) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.title = 'YouTube video player';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.style.position='absolute'; iframe.style.inset='0'; iframe.style.width='100%'; iframe.style.height='100%';
+      const ratio = document.createElement('div'); ratio.className='ratio'; ratio.appendChild(iframe);
+      const frame = el.parentElement; frame.innerHTML = ''; frame.appendChild(ratio);
+    }
+    document.querySelectorAll('.cover').forEach(c=>{
+      c.addEventListener('click',()=>mountYT(c));
+      c.tabIndex=0; c.addEventListener('keypress',e=>{ if(e.key==='Enter') mountYT(c); });
     });
 
-    // Expand first item by default (optional)
-    const first = document.querySelector('.acc-item');
-    if(first){
-      first.classList.add('open');
-      first.querySelector('.acc-body').style.maxHeight = first.querySelector('.acc-body').scrollHeight + 'px';
-    }
+    // FAQ accordion
+    document.querySelectorAll('.acc-item').forEach(item=>{
+      const btn=item.querySelector('.acc-btn');
+      const body=item.querySelector('.acc-body');
+      btn.addEventListener('click',()=>{
+        const open=item.classList.contains('open');
+        document.querySelectorAll('.acc-item.open').forEach(i=>{
+          i.classList.remove('open'); i.querySelector('.acc-body').style.maxHeight=0;
+        });
+        if(!open){ item.classList.add('open'); body.style.maxHeight=body.scrollHeight+'px'; }
+      });
+    });
+
+    // Open first FAQ by default (optional)
+    const first=document.querySelector('.acc-item'); if(first){ first.classList.add('open'); first.querySelector('.acc-body').style.maxHeight=first.querySelector('.acc-body').scrollHeight+'px'; }
   </script>
 </body>
 </html>
