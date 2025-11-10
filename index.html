@@ -28,13 +28,16 @@
     .guarantee{color:var(--red);font-weight:900;font-size:clamp(22px,3.6vw,30px);line-height:1.35;margin:14px 0}
     .sub{color:#3a3a3a;text-align:center;margin-top:12px;font-size:clamp(16px,2.4vw,19px)}
 
-    /* ===== VIDEO COVERS (clean thumbnail, 16:9, small badge) ===== */
+    /* ===== VIDEO COVERS (Framer style) ===== */
     .video-card{border:1px solid var(--line);border-radius:var(--r-big);overflow:hidden;background:#000}
     .yt-cover{position:relative;cursor:pointer;background:#000}
-    /* keep 16:9 frame and show portrait/landscape without weird cropping */
     .yt-cover .frame{position:relative;width:100%;padding-top:56.25%;background:#000}
-    .yt-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000} /* no diagonal/crop */
-    /* small play badge bottom-right, not covering text */
+    .yt-cover img{
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit:cover;               /* fills container */
+      object-position:50% 40%;        /* keeps text centered */
+      background:#000;
+    }
     .yt-cover .badge{
       position:absolute;right:14px;bottom:12px;height:46px;width:46px;border-radius:50%;
       display:grid;place-items:center;background:#ff0000cc;backdrop-filter:blur(2px);
@@ -52,26 +55,23 @@
       font-weight:900;letter-spacing:.02em;background:transparent;transition:.2s ease}
     .btn-outline:hover{background:var(--red);color:#fff}
 
-    /* ===== BOOKING (Calendly/LeadConnector) – tidy, centered, mobile-safe ===== */
+    /* BOOKING (Calendly / LeadConnector) */
     .booking-card{border:1px solid var(--line);border-radius:var(--r-big);overflow:hidden;background:#fff}
     .booking-card iframe{display:block;width:100%;height:1000px;border:0}
-    @media(max-width:480px){
-      .booking-card iframe{height:1180px} /* avoid cutoff on iPhone */
-    }
+    @media(max-width:480px){.booking-card iframe{height:1180px}}
 
     /* BLACK BAND */
     .band{background:#0b0b0f;color:#fff;text-align:center;padding:62px 0}
     .band h2{font-weight:900;letter-spacing:-.02em;font-size:clamp(28px,5vw,44px)}
     .band p{color:#cbd5e1;margin-top:8px}
 
-    /* RESULTS / dashed cards */
+    /* RESULTS */
     .results-title{font-weight:900;letter-spacing:-.015em;font-size:clamp(26px,4.6vw,42px)}
     .proof-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:14px}
     @media(min-width:960px){.proof-grid{grid-template-columns:repeat(3,1fr)}}
     .proof{border:1.5px dashed #f08c8c;border-radius:26px;padding:18px}
     .proof img{border-radius:14px;margin-top:12px}
 
-    /* BIG OUTLINED CTA */
     .btn-ghost{display:inline-flex;align-items:center;gap:12px;padding:20px 26px;background:#fff;color:#000;
       border:3px solid #000;border-radius:24px;box-shadow:8px 8px 0 #000;font-weight:900}
 
@@ -101,12 +101,12 @@
     <p class="sub">Click Below to Watch Video Below to See How it Works (Sound On 🔉)</p>
   </header>
 
-  <!-- HERO VIDEO (CLEAN THUMBNAIL, SMALL BADGE) -->
+  <!-- HERO VIDEO -->
   <section class="container">
     <div class="video-card">
       <div class="yt-cover" data-ytid="JDq-C7CQbSI">
         <div class="frame">
-          <img src="https://img.youtube.com/vi/JDq-C7CQbSI/hqdefault.jpg" alt="Hero video cover">
+          <img src="https://img.youtube.com/vi/JDq-C7CQbSI/maxresdefault.jpg" alt="Hero video cover">
         </div>
         <div class="badge"></div>
       </div>
@@ -148,7 +148,7 @@
     </div>
   </section>
 
-  <!-- TESTIMONIAL VIDEOS (CLEAN THUMBNAILS) -->
+  <!-- TESTIMONIAL VIDEOS -->
   <section class="section container">
     <h2 style="font-weight:900;letter-spacing:-.015em;text-align:center;margin-bottom:6px">Hear Directly from Our Clients</h2>
     <p style="text-align:center;color:#5b616b;max-width:65ch;margin:0 auto 16px">
@@ -158,7 +158,7 @@
     <div class="video-card" style="margin-bottom:18px">
       <div class="yt-cover" data-ytid="D4AppVEXyFw">
         <div class="frame">
-          <img src="https://img.youtube.com/vi/D4AppVEXyFw/hqdefault.jpg" alt="Explainer video cover 1">
+          <img src="https://img.youtube.com/vi/D4AppVEXyFw/maxresdefault.jpg" alt="Explainer 1">
         </div>
         <div class="badge"></div>
       </div>
@@ -167,7 +167,7 @@
     <div class="video-card">
       <div class="yt-cover" data-ytid="uVH9ABjZeAk">
         <div class="frame">
-          <img src="https://img.youtube.com/vi/uVH9ABjZeAk/hqdefault.jpg" alt="Explainer video cover 2">
+          <img src="https://img.youtube.com/vi/uVH9ABjZeAk/maxresdefault.jpg" alt="Explainer 2">
         </div>
         <div class="badge"></div>
       </div>
@@ -178,7 +178,7 @@
     </div>
   </section>
 
-  <!-- BIG OUTLINED CTA -->
+  <!-- BIG CTA -->
   <section class="container" style="padding:28px 0;text-align:center">
     <a class="btn-ghost" href="#book">Click Here If You Want More Deals</a>
   </section>
@@ -187,55 +187,24 @@
   <section class="section container faq-wrap" id="faq">
     <h2 class="faq-title">Frequently Asked Questions</h2>
     <div class="acc">
-      <div class="acc-item">
-        <button class="acc-btn">Are the leads exclusive?<span class="acc-icon">+</span></button>
-        <div class="acc-body"><p>Yes — each lead is delivered exclusively to you. We do not sell or recycle your leads.</p></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-btn">What sets you apart from other providers?<span class="acc-icon">+</span></button>
-        <div class="acc-body"><p>We combine AI automation, human QA, and paid traffic to deliver booked jobs — not just names.</p></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-btn">How fresh are the leads?<span class="acc-icon">+</span></button>
-        <div class="acc-body"><p>Every inquiry is followed up within minutes using our automated intake system.</p></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-btn">How do you qualify these leads?<span class="acc-icon">+</span></button>
-        <div class="acc-body"><p>We pre-filter by budget, location, and readiness — you spend time only on high-probability opportunities.</p></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-btn">How do you acquire the leads?<span class="acc-icon">+</span></button>
-        <div class="acc-body"><p>Leads are acquired from proven and high converting Google, Facebook, and Instagram ads.</p></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-btn">How is pricing structured?<span class="acc-icon">+</span></button>
-        <div class="acc-body"><p>Simple monthly retainer with volume tiers. Ask during your demo.</p></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-btn">Do you guarantee valid leads?<span class="acc-icon">+</span></button>
-        <div class="acc-body"><p>Invalid or spam submissions are replaced after QA.</p></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-btn">Are you compliant with data privacy regulations?<span class="acc-icon">+</span></button>
-        <div class="acc-body"><p>Yes — opt-in, consent, and secure data retention are built into our flow.</p></div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-btn">What are the next steps to get started?<span class="acc-icon">+</span></button>
-        <div class="acc-body"><p>Book a demo, connect your tools, and go live in days — not weeks.</p></div>
-      </div>
+      <div class="acc-item"><button class="acc-btn">Are the leads exclusive?<span class="acc-icon">+</span></button><div class="acc-body"><p>Yes — each lead is delivered exclusively to you. We do not sell or recycle your leads.</p></div></div>
+      <div class="acc-item"><button class="acc-btn">What sets you apart from other providers?<span class="acc-icon">+</span></button><div class="acc-body"><p>We combine AI automation, human QA, and paid traffic to deliver booked jobs — not just names.</p></div></div>
+      <div class="acc-item"><button class="acc-btn">How fresh are the leads?<span class="acc-icon">+</span></button><div class="acc-body"><p>Every inquiry is followed up within minutes using our automated intake system.</p></div></div>
+      <div class="acc-item"><button class="acc-btn">How do you qualify these leads?<span class="acc-icon">+</span></button><div class="acc-body"><p>We pre-filter by budget, location, and readiness — you spend time only on high-probability opportunities.</p></div></div>
+      <div class="acc-item"><button class="acc-btn">How do you acquire the leads?<span class="acc-icon">+</span></button><div class="acc-body"><p>Leads are acquired from proven and high converting Google, Facebook, and Instagram ads.</p></div></div>
+      <div class="acc-item"><button class="acc-btn">How is pricing structured?<span class="acc-icon">+</span></button><div class="acc-body"><p>Simple monthly retainer with volume tiers. Ask during your demo.</p></div></div>
+      <div class="acc-item"><button class="acc-btn">Do you guarantee valid leads?<span class="acc-icon">+</span></button><div class="acc-body"><p>Invalid or spam submissions are replaced after QA.</p></div></div>
+      <div class="acc-item"><button class="acc-btn">Are you compliant with data privacy regulations?<span class="acc-icon">+</span></button><div class="acc-body"><p>Yes — opt-in, consent, and secure data retention are built into our flow.</p></div></div>
+      <div class="acc-item"><button class="acc-btn">What are the next steps to get started?<span class="acc-icon">+</span></button><div class="acc-body"><p>Book a demo, connect your tools, and go live in days — not weeks.</p></div></div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <p style="margin-bottom:10px;">
-        <a href="mailto:hvacflowai@gmail.com">hvacflowai@gmail.com</a> •
-        <a href="tel:+12093280536">(209) 328-0536</a>
-      </p>
-      <p>Nothing on this page, any of our websites, or any of our content or curriculum is a promise or guarantee of results or future earnings, and we do not offer any legal, business, tax or other professional advice. Any financial numbers referenced here, or on any of our sites, are illustrative of concepts only and should not be considered average earnings, exact earnings, or promises for actual or future performance.</p>
-      <p style="margin-top:12px">Use caution and always consult your accountant, lawyer or professional advisor before acting on this or any information related to a lifestyle change or your business or finances. You alone are responsible and accountable for your decisions, actions and results in life.</p>
-      <p style="margin-top:18px">This site is not a part of the Meta website or Meta Inc. Additionally, This site is NOT endorsed by Meta in any way. Meta is a trademark of Meta, Inc.</p>
+      <p style="margin-bottom:10px;"><a href="mailto:hvacflowai@gmail.com">hvacflowai@gmail.com</a> • <a href="tel:+12093280536">(209) 328-0536</a></p>
+      <p>Nothing on this page or any content is a promise of results or earnings; we offer no legal, tax, or financial advice.</p>
+      <p style="margin-top:18px">This site is not part of Meta or endorsed by Meta. Meta is a trademark of Meta, Inc.</p>
       <p style="margin-top:18px"><a href="#">Terms &amp; Service</a></p>
     </div>
   </footer>
@@ -256,17 +225,17 @@
     const first=document.querySelector('.acc-item');
     if(first){ first.classList.add('open'); first.querySelector('.acc-body').style.maxHeight=first.querySelector('.acc-body').scrollHeight+'px'; }
 
-    // Video cover -> YouTube player on click (autoplay)
+    // VIDEO: Replace thumbnail with YouTube on click
     function mountYouTube(el){
       const id = el.getAttribute('data-ytid');
       const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3`;
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1`;
       iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       iframe.allowFullscreen = true;
       const ratio = document.createElement('div');
       ratio.className = 'ratio';
       ratio.appendChild(iframe);
-      const parent = el.parentElement; // .video-card
+      const parent = el.parentElement;
       parent.innerHTML = '';
       parent.appendChild(ratio);
     }
