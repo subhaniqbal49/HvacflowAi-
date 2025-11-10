@@ -29,17 +29,9 @@
     .guarantee{color:var(--red);font-weight:900;font-size:clamp(22px,3.6vw,30px);line-height:1.35;margin:14px 0}
     .sub{color:#3a3a3a;text-align:center;margin-top:12px;font-size:clamp(16px,2.4vw,19px)}
 
-    /* MEDIA: Framer-style custom video covers */
-    .video-card{border:1px solid var(--line);border-radius:var(--r-big);overflow:hidden;background:#000}
-    .yt-cover{position:relative;cursor:pointer}
-    .yt-cover img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
-    .yt-cover .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.35))}
-    .yt-cover .play{height:74px;width:74px;border-radius:50%;display:grid;place-items:center;background:#ff0000;
-      box-shadow:0 8px 24px rgba(0,0,0,.28)}
-    .yt-cover .play:before{content:"";border-left:18px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:4px}
-    .ratio{position:relative;width:100%;padding-top:56.25%}
-    .ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:var(--r-big)}
+    /* MEDIA: match Framer look (native YouTube, rounded) */
+    .frame{border:1px solid var(--line);border-radius:var(--r-big);overflow:hidden;background:#fff}
+    .frame iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
 
     /* CTA */
     .cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px}
@@ -51,7 +43,7 @@
     .btn-outline:hover{background:var(--red);color:#fff}
 
     /* BOOKING (right after hero) */
-    .book .video-card iframe{aspect-ratio:auto;height:1100px}
+    .book .frame iframe{aspect-ratio:auto;height:1100px}
 
     /* BLACK BAND */
     .band{background:#0b0b0f;color:#fff;text-align:center;padding:62px 0}
@@ -110,19 +102,16 @@
     <p class="sub">Click Below to Watch Video Below to See How it Works (Sound On 🔉)</p>
   </header>
 
-  <!-- HERO VIDEO (COVER THUMBNAIL) -->
+  <!-- HERO VIDEO (native YouTube iframe, rounded like Framer) -->
   <section class="container">
-    <div class="video-card">
-      <div class="yt-cover" data-ytid="JDq-C7CQbSI">
-        <img src="https://img.youtube.com/vi/JDq-C7CQbSI/hqdefault.jpg" alt="Hero video cover">
-        <div class="overlay"><div class="play"></div></div>
-      </div>
+    <div class="frame">
+      <iframe src="https://www.youtube.com/embed/JDq-C7CQbSI" title="Hero: How it Works" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </section>
 
   <!-- BOOKING right after hero -->
   <section id="book" class="section container book">
-    <div class="video-card">
+    <div class="frame">
       <iframe src="https://api.leadconnectorhq.com/widget/booking/RxAdTAWXAByLNQE0CMV0" title="Strategy Call | HVAC Flow AI" allowtransparency="true"></iframe>
     </div>
   </section>
@@ -155,24 +144,19 @@
     </div>
   </section>
 
-  <!-- TESTIMONIAL VIDEOS (COVER THUMBNAILS) -->
+  <!-- TESTIMONIAL VIDEOS (exact YouTube players, stacked) -->
   <section class="section container">
     <h2 style="font-weight:900;letter-spacing:-.015em;text-align:center;margin-bottom:6px">Hear Directly from Our Clients</h2>
     <p style="text-align:center;color:#5b616b;max-width:65ch;margin:0 auto 16px">
       These real HVAC business owners share their experiences working with HVACFLOW AI and the tangible results they've achieved with our systems.
     </p>
 
-    <div class="video-card" style="margin-bottom:18px">
-      <div class="yt-cover" data-ytid="D4AppVEXyFw">
-        <img src="https://img.youtube.com/vi/D4AppVEXyFw/hqdefault.jpg" alt="Explainer video 1 cover">
-        <div class="overlay"><div class="play"></div></div>
+    <div class="stack">
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/D4AppVEXyFw" title="Explainer 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
-    </div>
-
-    <div class="video-card">
-      <div class="yt-cover" data-ytid="uVH9ABjZeAk">
-        <img src="https://img.youtube.com/vi/uVH9ABjZeAk/hqdefault.jpg" alt="Explainer video 2 cover">
-        <div class="overlay"><div class="play"></div></div>
+      <div class="frame">
+        <iframe src="https://www.youtube.com/embed/uVH9ABjZeAk" title="Explainer 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
 
@@ -259,28 +243,6 @@
     // Open first by default
     const first=document.querySelector('.acc-item');
     if(first){ first.classList.add('open'); first.querySelector('.acc-body').style.maxHeight=first.querySelector('.acc-body').scrollHeight+'px'; }
-
-    // Replace thumbnail with YouTube iframe on click (clean look)
-    function mountYouTube(el){
-      const id = el.getAttribute('data-ytid');
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3`;
-      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-      iframe.allowFullscreen = true;
-
-      const ratio = document.createElement('div');
-      ratio.className = 'ratio';
-      ratio.appendChild(iframe);
-
-      const parent = el.parentElement; // .video-card
-      parent.innerHTML = '';
-      parent.appendChild(ratio);
-    }
-    document.querySelectorAll('.yt-cover').forEach(el=>{
-      el.addEventListener('click', ()=> mountYouTube(el));
-      el.tabIndex = 0;
-      el.addEventListener('keypress', e => { if (e.key === 'Enter') mountYouTube(el); });
-    });
   </script>
 </body>
 </html>
