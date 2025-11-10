@@ -11,76 +11,90 @@
 
   <style>
     :root{
-      --bg:#000;
-      --fg:#f5f5f7;
-      --muted:#a1a1aa;
-      --btn:#fff;
-      --btnText:#000;
-      --container:1200px;
+      --bg:#ffffff; --ink:#0b0b0f; --muted:#6b7280; --line:#e5e7eb;
+      --blue:#17B6FF; --cyan:#18E0FF; --red:#FF4A3D; --orange:#FF6A00;
+      --btn:#111827; --btnText:#ffffff; --container:1180px;
+      --radius:14px; --shadow:0 8px 22px rgba(2,6,23,.06);
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      background:var(--bg);
-      color:var(--fg);
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
-      overflow-x:hidden;
-    }
-    /* Subtle cinematic glow background */
-    body::before{
-      content:"";position:fixed;inset:-10%;z-index:-1;
-      background:radial-gradient(40% 25% at 50% 0%,rgba(255,255,255,.08),transparent 70%),
-                 radial-gradient(20% 20% at 15% 20%,rgba(255,70,0,.10),transparent 60%),
-                 radial-gradient(20% 20% at 85% 15%,rgba(0,170,255,.08),transparent 60%);
-      filter:blur(50px);
-      opacity:.7;
-    }
+    body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
     a{color:inherit;text-decoration:none}
     img,video{max-width:100%;display:block}
     .container{max-width:var(--container);margin:0 auto;padding:0 20px}
-    .btn{display:inline-block;padding:14px 20px;border-radius:10px;background:var(--btn);color:var(--btnText);font-weight:600;transition:.2s}
-    .btn:hover{opacity:.9;transform:translateY(-1px)}
-    .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
-    h1{font-size:clamp(28px,4.5vw,52px);line-height:1.08;margin-bottom:10px}
-    h2{font-size:clamp(22px,3vw,38px);margin-bottom:14px}
-    p{font-size:clamp(15px,1.25vw,18px);line-height:1.6;margin:10px 0}
-    .section{padding:72px 0}
+    .section{padding:88px 0}
+    h1{font-size:clamp(30px,4.4vw,54px);line-height:1.04;letter-spacing:-.01em;margin:0 0 10px}
+    h2{font-size:clamp(22px,3vw,36px);letter-spacing:-.01em;margin:0 0 12px}
+    p{font-size:clamp(15px,1.1vw,18px);line-height:1.65;margin:10px 0}
+    .muted{color:var(--muted)}
 
     /* NAV */
-    .nav{position:sticky;top:0;backdrop-filter:saturate(180%) blur(10px);background:rgba(0,0,0,.55);border-bottom:1px solid rgba(255,255,255,.05);z-index:100}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;min-height:64px}
+    .nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50}
+    .nav-inner{min-height:68px;display:flex;align-items:center;justify-content:space-between}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800}
-    .brand img{height:32px;width:32px;border-radius:50%;object-fit:cover}
+    .brand img{height:32px;width:32px;border-radius:50%}
     .links{display:flex;gap:20px;align-items:center}
-    .burger{display:none;background:none;border:0;color:#fff;font-size:26px}
-    .mobile-menu{display:none;flex-direction:column;gap:10px;padding:16px;background:rgba(0,0,0,.8);border-top:1px solid rgba(255,255,255,.1)}
+    .burger{display:none;background:none;border:0;font-size:26px;color:#111827}
+    .mobile-menu{display:none;flex-direction:column;gap:12px;padding:16px;border-top:1px solid var(--line);background:#fff}
+
+    /* Buttons */
+    .btn{display:inline-block;padding:14px 20px;border-radius:10px;background:var(--btn);color:var(--btnText);font-weight:600;border:1px solid #111827;transition:transform .15s ease, box-shadow .15s ease, background .2s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+    .btn.ghost{background:transparent;color:#111827;border:1px solid #111827}
+    .btn.gradient{background:linear-gradient(90deg,var(--blue),var(--cyan),var(--red),var(--orange));border:none;color:#111827}
+    .btn.gradient:hover{filter:saturate(1.1) brightness(1.02)}
 
     /* HERO */
-    .hero{padding:70px 0 40px;text-align:center}
-    .hero-video-wrap{margin-top:20px;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;background:#0b0b0b}
-    .hero-yt .ratio{position:relative;width:100%;padding-top:56.25%}
-    .hero-yt iframe{position:absolute;inset:0;width:100%;height:100%}
-    .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+    .hero{padding:92px 0 48px;text-align:center;position:relative}
+    .hero .aura{position:absolute;inset:-120px 0 auto 0;height:260px;z-index:-1;
+      background:
+        radial-gradient(28% 60% at 35% 40%, rgba(23,182,255,.20), transparent 60%),
+        radial-gradient(28% 60% at 65% 40%, rgba(255,74,61,.20), transparent 60%);
+      filter:blur(40px)
+    }
+    .hero-video-wrap{margin-top:18px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+    .ratio{position:relative;width:100%;padding-top:56.25%}
+    .ratio iframe{position:absolute;inset:0;width:100%;height:100%}
+    .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
 
-    /* GRID & PROOF */
-    .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
-    .proof{border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;background:#0b0b0b}
+    /* Trust strip */
+    .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+    .trust .row{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;padding:16px 0;color:#374151;font-size:14px}
+
+    /* Proof / cards */
+    .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    .proof{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;transition:transform .15s ease, box-shadow .15s ease}
+    .proof:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
     .proof img{aspect-ratio:16/9;object-fit:cover}
-    .proof figcaption{padding:12px;font-size:14px;color:#dadada}
-    .thumb-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
-    .thumb-row img{border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0b0b0b;aspect-ratio:16/9;object-fit:cover}
+    .proof figcaption{padding:12px 14px;font-size:14px;color:#374151;max-width:60ch}
+
+    .thumb-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .thumb-row img{border-radius:12px;border:1px solid var(--line);background:#fff;aspect-ratio:16/9;object-fit:cover}
 
     /* FAQ */
-    .faq details{border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:12px 14px;margin:10px 0;background:#0b0b0b}
+    .faq details{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;background:#fff;transition:border-color .15s ease}
     .faq summary{cursor:pointer;font-weight:600;list-style:none}
-    .faq summary::-webkit-details-marker{display:none}
+    .faq details[open]{border-color:#d1d5db}
 
-    /* CTA & FOOTER */
-    .cta-block{text-align:center;border-top:1px solid rgba(255,255,255,.06)}
-    .footer{border-top:1px solid rgba(255,255,255,.06);padding:28px 0;color:#cfcfcf}
+    /* Booking two-column */
+    .book{display:grid;grid-template-columns:1.1fr 1.4fr;gap:24px;align-items:start}
+    .book .panel{border:1px solid var(--line);border-radius:14px;background:#fff;padding:18px}
+    .check{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
+    .dot{height:8px;width:8px;border-radius:50%;margin-top:8px;background:linear-gradient(90deg,var(--blue),var(--red))}
+
+    /* Footer */
+    .footer{border-top:1px solid var(--line);padding:28px 0;color:#374151;background:#fff}
     .footer .container{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between}
     .contact{display:flex;gap:10px;align-items:center}
+
+    /* Mobile */
+    @media(max-width:990px){ .book{grid-template-columns:1fr} }
     @media(max-width:900px){
-      .links{display:none}.burger{display:block}.proof-grid,.thumb-row{grid-template-columns:1fr}
+      .links{display:none}.burger{display:block}
+      .proof-grid,.thumb-row{grid-template-columns:1fr}
+    }
+    @media(max-width:720px){
+      .sticky-cta{position:fixed;left:0;right:0;bottom:12px;display:flex;justify-content:center;z-index:40}
+      .sticky-cta .btn{box-shadow:var(--shadow)}
     }
   </style>
 </head>
@@ -95,35 +109,75 @@
       <nav class="links">
         <a href="#results">Results</a>
         <a href="#faq">FAQ</a>
-        <a class="btn" href="#cta">Schedule a demo</a>
+        <a class="btn" href="#book">Schedule a demo</a>
       </nav>
       <button class="burger" id="burger">☰</button>
     </div>
     <div class="mobile-menu" id="mobileMenu">
       <a href="#results">Results</a>
       <a href="#faq">FAQ</a>
-      <a class="btn" href="#cta">Schedule a demo</a>
+      <a class="btn" href="#book">Schedule a demo</a>
     </div>
   </header>
 
   <!-- HERO -->
   <main id="top">
     <section class="hero container">
+      <div class="aura"></div>
       <h1>Serving HVAC Contractors and Business Owners</h1>
       <h1>Serving Real Estate Investors, Brokers, &amp; Agents</h1>
       <p><b>We GUARANTEE $50,000+</b> in added revenue within 90 days — <b>OR YOU DON'T PAY</b></p>
-      <p style="color:#aaa;">Click below to watch the video (Sound On)</p>
-      <div class="hero-video-wrap hero-yt">
+      <p class="muted">Click below to watch the video (Sound On)</p>
+
+      <div class="hero-video-wrap">
         <div class="ratio">
-          <iframe src="https://www.youtube.com/embed/JDq-C7CQbSI" title="How it Works" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/JDq-C7CQbSI" title="How it Works - Hero" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
       </div>
+
       <div class="cta-row">
-        <a class="btn" href="#cta">Schedule a demo</a>
-        <a class="btn ghost" href="#cta">Click Here If You Want More Deals</a>
+        <a class="btn gradient" href="#book">Schedule a demo</a>
+        <a class="btn ghost" href="#book">Click Here If You Want More Deals</a>
       </div>
     </section>
- <!-- Positioning -->
+
+    <!-- Minimal trust strip -->
+    <section class="trust">
+      <div class="container">
+        <div class="row">
+          <span>Fast setup</span> • <span>Exclusive leads</span> • <span>Booked jobs, not just names</span>
+        </div>
+      </div>
+    </section>
+     <!-- EXPLAINER VIDEOS -->
+    <section class="section container">
+      <h2>How It Works (Explainer Videos)</h2>
+      <p class="muted">Two quick breakdowns of the system in action.</p>
+
+      <!-- Explainer #1 -->
+      <div class="hero-video-wrap" style="margin-top:14px">
+        <div class="ratio">
+          <iframe src="https://www.youtube.com/embed/D4AppVEXyFw"
+            title="Explainer 1"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- Explainer #2 -->
+      <div class="hero-video-wrap" style="margin-top:14px">
+        <div class="ratio">
+          <iframe src="https://www.youtube.com/embed/uVH9ABjZeAk"
+            title="Explainer 2"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Positioning -->
     <section class="section container">
       <h2>Less Clients, Better Results</h2>
       <p>We are strict on our client qualification process to ensure lead quality stays high and our team can over-deliver.</p>
@@ -140,27 +194,12 @@
         </figure>
         <figure class="proof">
           <img src="assets/proof2.JPG" alt="Client proof 2" />
-          <figcaption>$6.32 per qualified lead, massive ROI and a $3,000 closed deal from our precision campaigns.</figcaption>
+          <figcaption>$6.32 per qualified lead; massive ROI and a $3,000 closed deal from our precision campaigns.</figcaption>
         </figure>
         <figure class="proof">
           <img src="assets/proof3.JPG" alt="Client proof 3" />
-          <figcaption>Real-time automation turning inquiries into booked jobs automatically.</figcaption>
+          <figcaption>Real-time intake + nurturing turns inquiries into booked jobs without chasing.</figcaption>
         </figure>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section class="section container">
-      <h2>Hear Directly from Our Clients</h2>
-      <p>See what HVAC business owners are saying about their partnership with HVACFLOW AI. Below are video testimonials from satisfied clients.</p>
-      <div class="thumb-row">
-        <img src="assets/proof2.JPG" alt="Testimonial 1" />
-        <img src="assets/proof3.JPG" alt="Testimonial 2" />
-        <img src="assets/proof4.JPG" alt="Testimonial 3" />
-      </div>
-      <div class="cta-row">
-        <a class="btn" href="#cta">Click Here If You Want More Deals</a>
-        <a class="btn ghost" href="#cta">Click Here If You Want More Deals</a>
       </div>
     </section>
 
@@ -171,35 +210,67 @@
         <summary>Are the leads exclusive?</summary>
         <p>Yes — each lead is delivered exclusively to you. We do not sell or recycle your leads.</p>
       </details>
-      <details><summary>What sets you apart?</summary>
+      <details>
+        <summary>What sets you apart?</summary>
         <p>We combine AI automation, human QA, and paid traffic to deliver booked jobs — not just names.</p>
       </details>
-      <details><summary>How fresh are the leads?</summary>
+      <details>
+        <summary>How fresh are the leads?</summary>
         <p>Every inquiry is followed up within minutes using our automated intake system.</p>
       </details>
-      <details><summary>How do you qualify these leads?</summary>
-        <p>We pre-filter by budget, location, and readiness to buy — saving you time.</p>
+      <details>
+        <summary>How do you qualify these leads?</summary>
+        <p>We pre-filter by budget, location, and readiness — you spend time only on high-probability opportunities.</p>
       </details>
-      <details><summary>How is pricing structured?</summary>
-        <p>Simple monthly retainer with volume tiers. Ask during your demo for details.</p>
+      <details>
+        <summary>How is pricing structured?</summary>
+        <p>Simple monthly retainer with volume tiers. Ask during your demo.</p>
       </details>
-      <details><summary>Do you guarantee valid leads?</summary>
-        <p>Invalid or spam submissions are instantly replaced.</p>
+      <details>
+        <summary>Do you guarantee valid leads?</summary>
+        <p>Invalid or spam submissions are replaced after QA.</p>
       </details>
- <details><summary>Are you compliant with privacy laws?</summary>
+       <details>
+        <summary>Are you compliant with privacy laws?</summary>
         <p>Yes — we follow consent, opt-in, and secure data storage protocols.</p>
       </details>
-      <details><summary>What are the next steps?</summary>
+      <details>
+        <summary>What are the next steps?</summary>
         <p>Book a demo, connect your tools, and go live in days — not weeks.</p>
       </details>
     </section>
 
-    <!-- CTA -->
-    <section id="cta" class="section container cta-block">
+    <!-- BOOKING (LeadConnector / HighLevel) -->
+    <section id="book" class="section container">
       <h2>Ready to add $50,000+ in 90 days?</h2>
-      <div class="cta-row">
-        <a class="btn" href="mailto:hvacflowai@gmail.com">hvacflowai@gmail.com</a>
-        <a class="btn ghost" href="tel:+12093280536">(209) 328-0536</a>
+      <div class="book">
+        <!-- Left: reassurance bullets -->
+        <div class="panel">
+          <div class="check"><span class="dot"></span><p>Live in days — no heavy lift</p></div>
+          <div class="check"><span class="dot"></span><p>Exclusive, qualified leads only</p></div>
+          <div class="check"><span class="dot"></span><p>Automation + human QA for quality</p></div>
+          <div class="check"><span class="dot"></span><p>You own your pipeline & data</p></div>
+          <div class="check"><span class="dot"></span><p>Transparent tracking & reporting</p></div>
+          <div class="cta-row" style="margin-top:10px">
+            <a class="btn gradient" href="mailto:hvacflowai@gmail.com">hvacflowai@gmail.com</a>
+            <a class="btn ghost" href="tel:+12093280536">(209) 328-0536</a>
+          </div>
+        </div>
+
+        <!-- Right: scheduler -->
+        <div class="panel">
+          <div class="hero-video-wrap" style="border-radius:12px;overflow:hidden;">
+            <div class="ratio" style="position:relative;padding-top:1100px;max-width:100%">
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/RxAdTAWXAByLNQE0CMV0"
+                title="Schedule a demo"
+                frameborder="0"
+                style="position:absolute;inset:0;width:100%;height:100%;"
+                allowtransparency="true">
+              </iframe>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -223,10 +294,10 @@
   </footer>
 
   <script>
-    // Mobile Menu Toggle
+    // Mobile menu toggle
     const burger = document.getElementById('burger');
     const menu = document.getElementById('mobileMenu');
-    burger?.addEventListener('click', ()=>{
+    burger?.addEventListener('click', ()=> {
       menu.style.display = (menu.style.display==='flex') ? 'none' : 'flex';
     });
   </script>
