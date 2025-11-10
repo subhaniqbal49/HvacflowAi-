@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HVACFLOW AI</title>
+  <meta name="description" content="Serving HVAC contractors, real estate investors, brokers, and agents. We GUARANTEE $50,000+ in added revenue within 90 days — or you don't pay." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#000;
+      --fg:#f5f5f7;
+      --muted:#a1a1aa;
+      --btn:#fff;
+      --btnText:#000;
+      --container:1200px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      background:var(--bg);
+      color:var(--fg);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+      overflow-x:hidden;
+    }
+    /* Subtle cinematic glow background */
+    body::before{
+      content:"";position:fixed;inset:-10%;z-index:-1;
+      background:radial-gradient(40% 25% at 50% 0%,rgba(255,255,255,.08),transparent 70%),
+                 radial-gradient(20% 20% at 15% 20%,rgba(255,70,0,.10),transparent 60%),
+                 radial-gradient(20% 20% at 85% 15%,rgba(0,170,255,.08),transparent 60%);
+      filter:blur(50px);
+      opacity:.7;
+    }
+    a{color:inherit;text-decoration:none}
+    img,video{max-width:100%;display:block}
+    .container{max-width:var(--container);margin:0 auto;padding:0 20px}
+    .btn{display:inline-block;padding:14px 20px;border-radius:10px;background:var(--btn);color:var(--btnText);font-weight:600;transition:.2s}
+    .btn:hover{opacity:.9;transform:translateY(-1px)}
+    .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
+    h1{font-size:clamp(28px,4.5vw,52px);line-height:1.08;margin-bottom:10px}
+    h2{font-size:clamp(22px,3vw,38px);margin-bottom:14px}
+    p{font-size:clamp(15px,1.25vw,18px);line-height:1.6;margin:10px 0}
+    .section{padding:72px 0}
+
+    /* NAV */
+    .nav{position:sticky;top:0;backdrop-filter:saturate(180%) blur(10px);background:rgba(0,0,0,.55);border-bottom:1px solid rgba(255,255,255,.05);z-index:100}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;min-height:64px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand img{height:32px;width:32px;border-radius:50%;object-fit:cover}
+    .links{display:flex;gap:20px;align-items:center}
+    .burger{display:none;background:none;border:0;color:#fff;font-size:26px}
+    .mobile-menu{display:none;flex-direction:column;gap:10px;padding:16px;background:rgba(0,0,0,.8);border-top:1px solid rgba(255,255,255,.1)}
+
+    /* HERO */
+    .hero{padding:70px 0 40px;text-align:center}
+    .hero-video-wrap{margin-top:20px;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;background:#0b0b0b}
+    .hero-yt .ratio{position:relative;width:100%;padding-top:56.25%}
+    .hero-yt iframe{position:absolute;inset:0;width:100%;height:100%}
+    .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+
+    /* GRID & PROOF */
+    .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+    .proof{border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;background:#0b0b0b}
+    .proof img{aspect-ratio:16/9;object-fit:cover}
+    .proof figcaption{padding:12px;font-size:14px;color:#dadada}
+    .thumb-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+    .thumb-row img{border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0b0b0b;aspect-ratio:16/9;object-fit:cover}
+
+    /* FAQ */
+    .faq details{border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:12px 14px;margin:10px 0;background:#0b0b0b}
+    .faq summary{cursor:pointer;font-weight:600;list-style:none}
+    .faq summary::-webkit-details-marker{display:none}
+
+    /* CTA & FOOTER */
+    .cta-block{text-align:center;border-top:1px solid rgba(255,255,255,.06)}
+    .footer{border-top:1px solid rgba(255,255,255,.06);padding:28px 0;color:#cfcfcf}
+    .footer .container{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .contact{display:flex;gap:10px;align-items:center}
+    @media(max-width:900px){
+      .links{display:none}.burger{display:block}.proof-grid,.thumb-row{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner container">
+      <a href="#top" class="brand">
+        <img src="assets/logo.PNG" alt="HVACFLOW AI logo" />
+        <span>HVACFLOW <strong>AI</strong></span>
+      </a>
+      <nav class="links">
+        <a href="#results">Results</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn" href="#cta">Schedule a demo</a>
+      </nav>
+      <button class="burger" id="burger">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#results">Results</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#cta">Schedule a demo</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top">
+    <section class="hero container">
+      <h1>Serving HVAC Contractors and Business Owners</h1>
+      <h1>Serving Real Estate Investors, Brokers, &amp; Agents</h1>
+      <p><b>We GUARANTEE $50,000+</b> in added revenue within 90 days — <b>OR YOU DON'T PAY</b></p>
+      <p style="color:#aaa;">Click below to watch the video (Sound On)</p>
+      <div class="hero-video-wrap hero-yt">
+        <div class="ratio">
+          <iframe src="https://www.youtube.com/embed/JDq-C7CQbSI" title="How it Works" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="#cta">Schedule a demo</a>
+        <a class="btn ghost" href="#cta">Click Here If You Want More Deals</a>
+      </div>
+    </section>
+ <!-- Positioning -->
+    <section class="section container">
+      <h2>Less Clients, Better Results</h2>
+      <p>We are strict on our client qualification process to ensure lead quality stays high and our team can over-deliver.</p>
+      <p class="muted">(See Client Testimonials Below)</p>
+    </section>
+
+    <!-- RESULTS / PROOF -->
+    <section id="results" class="section container">
+      <h2>Real Client Success Stories</h2>
+      <div class="proof-grid">
+        <figure class="proof">
+          <img src="assets/proof1.JPG" alt="Client proof 1" />
+          <figcaption>Andrew closed over $7,000 in deals in less than 48 hours after implementing our system — proof of HVACFLOW AI’s power.</figcaption>
+        </figure>
+        <figure class="proof">
+          <img src="assets/proof2.JPG" alt="Client proof 2" />
+          <figcaption>$6.32 per qualified lead, massive ROI and a $3,000 closed deal from our precision campaigns.</figcaption>
+        </figure>
+        <figure class="proof">
+          <img src="assets/proof3.JPG" alt="Client proof 3" />
+          <figcaption>Real-time automation turning inquiries into booked jobs automatically.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section container">
+      <h2>Hear Directly from Our Clients</h2>
+      <p>See what HVAC business owners are saying about their partnership with HVACFLOW AI. Below are video testimonials from satisfied clients.</p>
+      <div class="thumb-row">
+        <img src="assets/proof2.JPG" alt="Testimonial 1" />
+        <img src="assets/proof3.JPG" alt="Testimonial 2" />
+        <img src="assets/proof4.JPG" alt="Testimonial 3" />
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="#cta">Click Here If You Want More Deals</a>
+        <a class="btn ghost" href="#cta">Click Here If You Want More Deals</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section container faq">
+      <h2>Frequently Asked Questions</h2>
+      <details open>
+        <summary>Are the leads exclusive?</summary>
+        <p>Yes — each lead is delivered exclusively to you. We do not sell or recycle your leads.</p>
+      </details>
+      <details><summary>What sets you apart?</summary>
+        <p>We combine AI automation, human QA, and paid traffic to deliver booked jobs — not just names.</p>
+      </details>
+      <details><summary>How fresh are the leads?</summary>
+        <p>Every inquiry is followed up within minutes using our automated intake system.</p>
+      </details>
+      <details><summary>How do you qualify these leads?</summary>
+        <p>We pre-filter by budget, location, and readiness to buy — saving you time.</p>
+      </details>
+      <details><summary>How is pricing structured?</summary>
+        <p>Simple monthly retainer with volume tiers. Ask during your demo for details.</p>
+      </details>
+      <details><summary>Do you guarantee valid leads?</summary>
+        <p>Invalid or spam submissions are instantly replaced.</p>
+      </details>
+ <details><summary>Are you compliant with privacy laws?</summary>
+        <p>Yes — we follow consent, opt-in, and secure data storage protocols.</p>
+      </details>
+      <details><summary>What are the next steps?</summary>
+        <p>Book a demo, connect your tools, and go live in days — not weeks.</p>
+      </details>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="section container cta-block">
+      <h2>Ready to add $50,000+ in 90 days?</h2>
+      <div class="cta-row">
+        <a class="btn" href="mailto:hvacflowai@gmail.com">hvacflowai@gmail.com</a>
+        <a class="btn ghost" href="tel:+12093280536">(209) 328-0536</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="legal">
+        <a href="#" class="muted">Terms &amp; Service</a>
+      </div>
+      <div class="contact">
+        <a href="mailto:hvacflowai@gmail.com">hvacflowai@gmail.com</a>
+        <span>•</span>
+        <a href="tel:+12093280536">(209) 328-0536</a>
+      </div>
+      <div class="disclaimer">
+        <p>Nothing on this page, any of our websites, or any of our content is a guarantee of results or earnings. Examples are illustrative only and not promises of future performance.</p>
+        <p>Use caution and always consult your advisor before acting on information related to your business or finances. You alone are responsible for your decisions and results.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('mobileMenu');
+    burger?.addEventListener('click', ()=>{
+      menu.style.display = (menu.style.display==='flex') ? 'none' : 'flex';
+    });
+  </script>
+</body>
+</html>
